@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages{
-        stage('checkout'){
+        stage('Checkout'){
             steps {
                 echo 'checking out code'  
                 git branch: 'main', url: "https://github.com/ErickGichuki/Dockerize-python-app.git"
