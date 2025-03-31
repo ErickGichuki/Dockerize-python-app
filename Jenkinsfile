@@ -24,7 +24,7 @@ pipeline {
             steps {
                 script{
                     sh '''
-                    echo 'push to artifacts to the registry...'
+                    echo 'Push to artifacts to the registry...'
                     docker push erickgichukimucheru/cicdpipeline
                     '''
                 }
