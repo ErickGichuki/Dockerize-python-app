@@ -43,12 +43,12 @@ pipeline {
         //         }
         //     }
         // }
-        stage('Build and push image'){
+        stage('Build and push the artifacts'){
             steps {
-                script {
-                    withCredentials([usernamePassword(credentialsId: 'docker-cred', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                script{
+                    withCredentials([usernamePassword(credentialsId: 'docker-cred', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]){
                         sh '''
-                        echo 'Building docker image...'
+                        echo 'building the image...'
                         docker build -t erickgichukimucheru/cicdpipeline .
 
                         echo 'Logging in to DockerHub...'
@@ -57,6 +57,7 @@ pipeline {
                         echo 'Pushing the Docker image...'
                         docker push erickgichukimucheru/cicdpipeline
                         '''
+                    }
                 }
             }
         }
