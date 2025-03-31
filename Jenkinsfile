@@ -1,6 +1,9 @@
 pipeline {
     agent any
-
+    environment {
+        DOCKER_USERNAME = credentials('docker-username')
+        DOCKER_PASSWORD = credentials('docker-password')
+    }
     stages{
         stage('Checkout'){
             steps {
@@ -20,10 +23,20 @@ pipeline {
             }
         }
 
+        stage('Login to DockerHub') {
+            steps {
+                script {
+                    sh '''
+                    echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+                    '''
+                }
+            }
+        }
+
         stage('Push the artifacts to Dockerhub'){
             steps {
                 script{
-                    sh '''
+                    sh '''h
                     echo 'Push to artifacts to the registry...'
                     docker push erickgichukimucheru/cicdpipeline
                     '''
