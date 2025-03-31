@@ -9,11 +9,11 @@ pipeline {
             }
         }
 
-        stage('Build Docker'){
+        stage('Build Docker Image'){
             steps {
                 script {
                     sh '''
-                    echo 'Build Docker Image'
+                    echo 'Building docker image...'
                     docker build -t erickgichukimucheru/cicdpipeline .
                     '''
                 }
@@ -24,7 +24,7 @@ pipeline {
             steps {
                 script{
                     sh '''
-                    echo 'push to the repo'
+                    echo 'push to artifacts to the registry...'
                     docker push erickgichukimucheru/cicdpipeline
                     '''
                 }
