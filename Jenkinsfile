@@ -5,7 +5,7 @@ pipeline {
         stage('checkout'){
             steps {
                 echo 'checking out code'  
-                git branch: 'main', url: "https://github.com/ErickGichuki/Dockerize-python-app.git",
+                git branch: 'main', url: "https://github.com/ErickGichuki/Dockerize-python-app.git"
             }
         }
 
@@ -32,5 +32,3 @@ pipeline {
         }
     }
 }
-
-//d
