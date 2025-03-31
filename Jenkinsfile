@@ -20,7 +20,7 @@ pipeline {
             }
         }
 
-        stage('Push the artifacts'){
+        stage('Push the artifacts to Dockerhub'){
             steps {
                 script{
                     sh '''
