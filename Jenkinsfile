@@ -27,7 +27,7 @@ pipeline {
         stage('Push the artifacts to Dockerhub'){
             steps {
                 script{
-                    sh '''h
+                    sh '''
                     echo 'Push to artifacts to the registry...'
                     docker push erickgichukimucheru/cicdpipeline
                     '''
