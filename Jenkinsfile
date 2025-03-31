@@ -4,9 +4,8 @@ pipeline {
     stages{
         stage('checkout'){
             steps {
-                echo 'checking out code'
-                url: "https://github.com/ErickGichuki/Dockerize-python-app.git",
-                branch: 'main'
+                echo 'checking out code'  
+                git branch: 'main', url: "https://github.com/ErickGichuki/Dockerize-python-app.git",
             }
         }
 
