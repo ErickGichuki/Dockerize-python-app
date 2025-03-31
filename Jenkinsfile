@@ -12,16 +12,16 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image'){
-            steps {
-                script {
-                    sh '''
-                    echo 'Building docker image...'
-                    docker build -t erickgichukimucheru/cicdpipeline .
-                    '''
-                }
-            }
-        }
+        // stage('Build Docker Image'){
+        //     steps {
+        //         script {
+        //             sh '''
+        //             echo 'Building docker image...'
+        //             docker build -t erickgichukimucheru/cicdpipeline .
+        //             '''
+        //         }
+        //     }
+        // }
 
         // stage('Login to DockerHub') {
         //     steps {
@@ -33,33 +33,33 @@ pipeline {
         //     }
         // }
 
-        stage('Push the artifacts to Dockerhub'){
-            steps {
-                script{
-                    sh '''h
-                    echo 'Push to artifacts to the registry...'
-                    docker push erickgichukimucheru/cicdpipeline
-                    '''
-                }
-            }
-        }
-        // stage('Build and push the artifacts'){
+        // stage('Push the artifacts to Dockerhub'){
         //     steps {
         //         script{
-        //             withCredentials([usernamePassword(credentialsId: 'docker-cred', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]){
-        //                 sh '''
-        //                 echo 'building the image...'
-        //                 docker build -t erickgichukimucheru/cicdpipeline .
-
-        //                 echo 'Logging in to DockerHub...'
-        //                 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-
-        //                 echo 'Pushing the Docker image...'
-        //                 docker push erickgichukimucheru/cicdpipeline
-        //                 '''
-        //             }
+        //             sh '''h
+        //             echo 'Push to artifacts to the registry...'
+        //             docker push erickgichukimucheru/cicdpipeline
+        //             '''
         //         }
         //     }
         // }
+        stage('Build and push the artifacts'){
+            steps {
+                script{
+                    withCredentials([usernamePassword(credentialsId: 'docker-cred', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]){
+                        sh '''
+                        echo 'building the image...'
+                        docker build -t erickgichukimucheru/cicdpipeline .
+
+                        echo 'Logging in to DockerHub...'
+                        echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
+                        echo 'Pushing the Docker image...'
+                        docker push erickgichukimucheru/cicdpipeline
+                        '''
+                    }
+                }
+            }
+        }
     }
 }
