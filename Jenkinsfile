@@ -24,16 +24,16 @@ pipeline {
             }
         }
 
-        stage('Push the artifacts to Dockerhub'){
-            steps {
-                script{
-                    sh '''
-                    echo 'Push to artifacts to the registry...'
-                    docker push erickgichukimucheru/cicdpipeline
-                    '''
-                }
-            }
-        }
+        // stage('Push the artifacts to Dockerhub'){
+        //     steps {
+        //         script{
+        //             sh '''
+        //             echo 'Push to artifacts to the registry...'
+        //             docker push erickgichukimucheru/cicdpipeline
+        //             '''
+        //         }
+        //     }
+        // }
         // stage('Build and push the artifacts'){
         //     steps {
         //         script{
