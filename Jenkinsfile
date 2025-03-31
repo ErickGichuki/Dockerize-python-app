@@ -12,34 +12,51 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image'){
+        // stage('Build Docker Image'){
+        //     steps {
+        //         script {
+        //             sh '''
+        //             echo 'Building docker image...'
+        //             docker build -t erickgichukimucheru/cicdpipeline .
+        //             '''
+        //         }
+        //     }
+        // }
+
+        // stage('Login to DockerHub') {
+        //     steps {
+        //         script {
+        //             sh '''
+        //             echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+        //             '''
+        //         }
+        //     }
+        // }
+
+        // stage('Push the artifacts to Dockerhub'){
+        //     steps {
+        //         script{
+        //             sh '''h
+        //             echo 'Push to artifacts to the registry...'
+        //             docker push erickgichukimucheru/cicdpipeline
+        //             '''
+        //         }
+        //     }
+        // }
+        stage('Build and push image'){
             steps {
                 script {
-                    sh '''
-                    echo 'Building docker image...'
-                    docker build -t erickgichukimucheru/cicdpipeline .
-                    '''
-                }
-            }
-        }
+                    withCredentials([usernamePassword(credentialsId: 'docker-cred', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                        sh '''
+                        echo 'Building docker image...'
+                        docker build -t erickgichukimucheru/cicdpipeline .
 
-        stage('Login to DockerHub') {
-            steps {
-                script {
-                    sh '''
-                    echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-                    '''
-                }
-            }
-        }
+                        echo 'Logging in to DockerHub...'
+                        echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
-        stage('Push the artifacts to Dockerhub'){
-            steps {
-                script{
-                    sh '''h
-                    echo 'Push to artifacts to the registry...'
-                    docker push erickgichukimucheru/cicdpipeline
-                    '''
+                        echo 'Pushing the Docker image...'
+                        docker push erickgichukimucheru/cicdpipeline
+                        '''
                 }
             }
         }
