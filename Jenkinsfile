@@ -18,7 +18,7 @@ pipeline {
                 script {
                     sh '''
                     echo 'Building docker image...'
-                    docker build -t erickgichukimucheru/cicdpipeline .
+                    docker build -t erickgichukimucheru/bericksdesign .
                     '''
                 }
             }
@@ -29,22 +29,22 @@ pipeline {
         //         script{
         //             sh '''
         //             echo 'Push to artifacts to the registry...'
-        //             docker push erickgichukimucheru/cicdpipeline
+        //             docker push erickgichukimucheru/bericksdesign
         //             '''
         //         }
         //     }
         // }
-        
+
         // stage('Build and push the artifacts'){
         //     steps {
         //         script{
         //             withCredentials([usernamePassword(credentialsId: 'docker-cred', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]){
         //                 sh '''
         //                 echo 'building the image...'
-        //                 docker build -t erickgichukimucheru/cicdpipeline .
+        //                 docker build -t erickgichukimucheru/bericksdesign .
 
         //                 echo 'Pushing the Docker image...'
-        //                 docker push erickgichukimucheru/cicdpipeline
+        //                 docker push erickgichukimucheru/bericksdesign
         //                 '''
         //             }
         //         }
