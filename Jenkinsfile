@@ -28,15 +28,15 @@ pipeline {
         stage('Static Code Analysis'){
             steps {
                 echo 'Running Sonarqube Analysis'
-                withCredentials([string(credentialsId: 'sonarqube',variable: 'SONAR_AUTH_TOKEN')]){
-                    sh '''
-                    sonar-scanner \
-                        -Dsonar.projectKey=BericksDesigns \
-                        -Dsonar.sources=. \
-                        -Dsonar.host.url=$SONAR_HOST_URL \
-                        -Dsonar.login=$SONAR_AUTH_TOKEN
-                    '''
-                }
+                // withCredentials([string(credentialsId: 'sonarqube',variable: 'SONAR_AUTH_TOKEN')]){
+                //     sh '''
+                //     sonar-scanner \
+                //         -Dsonar.projectKey=BericksDesigns \
+                //         -Dsonar.sources=. \
+                //         -Dsonar.host.url=$SONAR_HOST_URL \
+                //         -Dsonar.login=$SONAR_AUTH_TOKEN
+                //     '''
+                // }
             }
         }
         stage('Build Docker Image'){
