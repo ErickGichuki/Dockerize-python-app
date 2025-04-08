@@ -14,7 +14,17 @@ pipeline {
                 git branch: 'main', url: "https://github.com/ErickGichuki/Dockerize-python-app.git"
             }
         }
-
+        
+        stage('Build'){
+            steps {
+                echo 'Building Bericks Designs'
+                sh '''
+                python --version
+                pip install --upgrade pip
+                pip install requirements.txt
+                '''
+            }
+        }
         stage('Static Code Analysis'){
             steps {
                 echo 'Running Sonarqube Analysis'
