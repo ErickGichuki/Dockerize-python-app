@@ -38,16 +38,16 @@ pipeline {
             }
         }
 
-        // stage('Push the artifacts to Dockerhub'){
-        //     steps {
-        //         script{
-        //             sh '''
-        //             echo 'Push to artifacts to the registry...'
-        //             docker push erickgichukimucheru/bericksdesign
-        //             '''
-        //         }
-        //     }
-        // }
+        stage('Push the artifacts to Dockerhub'){
+            steps {
+                script{
+                    sh '''
+                    echo 'Push to artifacts to the registry...'
+                    docker push erickgichukimucheru/bericksdesign
+                    '''
+                }
+            }
+        }
 
         // stage('Build and push the artifacts'){
         //     steps {
