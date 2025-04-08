@@ -4,7 +4,7 @@ pipeline {
     environment {
         // DOCKER_USERNAME = credentials('docker-username')
         // DOCKER_PASSWORD = credentials('docker-password')
-        SONAR_HOST_URL = 'http://35.90.47.233:9000/'
+        SONAR_HOST_URL = 'http://52.33.232.90:9000/'
         
     }
     stages{
