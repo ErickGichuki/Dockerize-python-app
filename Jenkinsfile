@@ -18,21 +18,21 @@ pipeline {
         stage('Static Code Analysis'){
             steps {
                 echo 'Running Sonarqube Analysis'
-                withCredentials([string(credentialsId: 'sonarqube',variable: 'SONAR_AUTH_TOKEN')]){
-                    script{
-                        sonar(
-                            installationName: 'sonarqube',
-                            projectKey: 'BericksDesigns',
-                            projectName: 'BericksDesigns',
-                            projectVersion: '1.0',
-                            sources: '.',
-                            additionalProperties: [
-                                "sonar.host.url": "$SONAR_URL",
-                                "sonar.login": "$SONAR_AUTH_TOKEN"
-                            ]
-                        )
-                    }
-                }
+                // withCredentials([string(credentialsId: 'sonarqube',variable: 'SONAR_AUTH_TOKEN')]){
+                //     script{
+                //         sonar(
+                //             installationName: 'sonarqube',
+                //             projectKey: 'BericksDesigns',
+                //             projectName: 'BericksDesigns',
+                //             projectVersion: '1.0',
+                //             sources: '.',
+                //             additionalProperties: [
+                //                 "sonar.host.url": "$SONAR_URL",
+                //                 "sonar.login": "$SONAR_AUTH_TOKEN"
+                //             ]
+                //         )
+                //     }
+                // }
             }
         }
         stage('Build Docker Image'){
