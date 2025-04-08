@@ -34,6 +34,7 @@ pipeline {
         //         }
         //     }
         // }
+        
         // stage('Build and push the artifacts'){
         //     steps {
         //         script{
