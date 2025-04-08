@@ -13,6 +13,20 @@ pipeline {
             }
         }
 
+        stage('Static code Analysis'){
+            steps {
+                echo 'Running sonarqube analysis'
+                // withSonarQubeEnv('sonarqube-server'){
+                //     sh '''
+                //     sonar-scanner \
+                //         -Dsonar.projectKey=BericksDesigns \
+                //         -Dsonar.sources. \
+                //         -Dsonar.host.url=$SONAR_HOST_URL
+                //         -Dsonar.login=$SONAR_AUTH_TOKEN
+                //     '''
+                // }
+            }
+        }
         stage('Build Docker Image'){
             steps {
                 script {
