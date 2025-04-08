@@ -41,10 +41,11 @@ pipeline {
         stage('Push the artifacts to Dockerhub'){
             steps {
                 script{
-                    sh '''
-                    echo 'Push to artifacts to the registry...'
+                    echo "Pushing the artifacts to the registry"
+                    // sh '''
+                    // echo 'Push to artifacts to the registry...'
                     // docker push erickgichukimucheru/bericksdesign
-                    '''
+                    // '''
                 }
             }
         }
