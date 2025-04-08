@@ -49,6 +49,13 @@ pipeline {
                 }
             }
         }
+        stage ('Deploy to k8s'){
+            steps {
+                script{
+                    echo "Deploying the application to k8s"
+                }
+            }
+        }
 
         // stage('Build and push the artifacts'){
         //     steps {
