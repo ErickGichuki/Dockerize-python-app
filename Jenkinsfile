@@ -13,7 +13,7 @@ pipeline {
             }
         }
 
-        stage('Static code Analysis'){
+        stage('Static Code Analysis'){
             steps {
                 echo 'Running sonarqube analysis'
                 // withSonarQubeEnv('sonarqube-server'){
