@@ -42,9 +42,6 @@ pipeline {
         //                 echo 'building the image...'
         //                 docker build -t erickgichukimucheru/cicdpipeline .
 
-        //                 echo 'Logging in to DockerHub...'
-        //                 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-
         //                 echo 'Pushing the Docker image...'
         //                 docker push erickgichukimucheru/cicdpipeline
         //                 '''
