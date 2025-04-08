@@ -43,7 +43,7 @@ pipeline {
                 script{
                     sh '''
                     echo 'Push to artifacts to the registry...'
-                    docker push erickgichukimucheru/bericksdesign
+                    // docker push erickgichukimucheru/bericksdesign
                     '''
                 }
             }
