@@ -2,10 +2,11 @@ pipeline {
     agent any
 
     environment {
-        // DOCKER_USERNAME = credentials('docker-username')
-        // DOCKER_PASSWORD = credentials('docker-password')
-        SONAR_HOST_URL = 'http://52.33.232.90:9000/'
-        
+        SONAR_URL = "http://44.248.42.50:9000/"
+        DOCKER_IMAGE_PREFIX = "erickgichukimucheru/cicdpipeline"
+        REGISTRY_URL = "https://index.docker.io/"
+        GIT_REPO_NAME = "Java-maven-cicid"
+        GIT_USER_NAME = "ErickGichuki"
     }
     stages{
         stage('Checkout'){
@@ -28,15 +29,16 @@ pipeline {
         stage('Static Code Analysis'){
             steps {
                 echo 'Running Sonarqube Analysis'
-                // withCredentials([string(credentialsId: 'sonarqube',variable: 'SONAR_AUTH_TOKEN')]){
-                //     sh '''
-                //     sonar-scanner \
-                //         -Dsonar.projectKey=BericksDesigns \
-                //         -Dsonar.sources=. \
-                //         -Dsonar.host.url=$SONAR_HOST_URL \
-                //         -Dsonar.login=$SONAR_AUTH_TOKEN
-                //     '''
-                // }
+                withCredentials([string(credentialsId: 'sonarqube',variable: 'SONAR_AUTH_TOKEN')]){
+                    sh '''
+                    cd devops
+                    sonar-scanner \
+                        -Dsonar.projectKey=BericksDesigns \
+                        -Dsonar.sources=. \
+                        -Dsonar.host.url=$SONAR_URL \
+                        -Dsonar.login=$SONAR_AUTH_TOKEN
+                    '''
+                }
             }
         }
         stage('Build Docker Image'){
