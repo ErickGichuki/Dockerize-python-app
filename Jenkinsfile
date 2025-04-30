@@ -25,7 +25,7 @@ pipeline {
                 // python3 -m pip install -r requirements.txt 
                 // '''
             }
-        }
+        }//
         stage('Static Code Analysis'){
             steps {
                 echo 'Running Sonarqube Analysis'
