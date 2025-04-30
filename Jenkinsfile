@@ -59,21 +59,5 @@ pipeline {
                 }
             }
         }
-
-        // stage('Build and push the artifacts'){
-        //     steps {
-        //         script{
-        //             withCredentials([usernamePassword(credentialsId: 'docker-cred', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]){
-        //                 sh '''
-        //                 echo 'building the image...'
-        //                 docker build -t erickgichukimucheru/bericksdesign .
-
-        //                 echo 'Pushing the Docker image...'
-        //                 docker push erickgichukimucheru/bericksdesign
-        //                 '''
-        //             }
-        //         }
-        //     }
-        // }
     }
 }
