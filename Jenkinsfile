@@ -4,7 +4,7 @@ pipeline {
     environment {
         SONAR_URL = "http://35.86.171.160:9000/"
         DOCKER_IMAGE_PREFIX = "erickgichukimucheru/cicdpipeline"
-        REGISTRY_URL = "https://index.docker.io/"
+        REGISTRY_URL = "https://index.docker.io/v1/"
         GIT_REPO_NAME = "Java-maven-cicid"
         GIT_USER_NAME = "ErickGichuki"
     }
@@ -41,25 +41,14 @@ pipeline {
                 }
             }
         }
-        stage('Build Docker Image'){
+        stage('Build and Push Docker Image'){
             steps {
                 script {
-                    sh '''
-                    echo 'Building docker image...'
-                    docker build -t erickgichukimucheru/bericksdesign .
-                    '''
-                }
-            }
-        }
-
-        stage('Push the artifacts to Dockerhub'){
-            steps {
-                script{
-                    echo "Pushing the artifacts to the registry"
-                    // sh '''
-                    // echo 'Push to artifacts to the registry...'
-                    // docker push erickgichukimucheru/bericksdesign
-                    // '''
+                    echo "building docker image..."
+                    def imageTag = "${DOCKER_IMAGE_PREFIX}:${BUILD_NUMBER}"
+                    sh "docker build -t ${imageTag} ."
+                    docker.withRegistry(REGISTRY_URL, "docker-cred") {
+                    docker.image(imageTag).push()
                 }
             }
         }
