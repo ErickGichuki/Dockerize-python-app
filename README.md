@@ -29,6 +29,16 @@ sudo apt-get install jenkins -y
     ```chown -R sonarqube:sonarqube /home/sonarqube/sonarqube-9.4.0.54424```
     ```cd sonarqube-9.4.0.54424/bin/linux-x86-64/```
     ```./sonar.sh start```
+- install sonar-scanner 
+```sudo apt update
+    sudo apt install -y unzip
+    wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip
+    unzip sonar-scanner-cli-*.zip
+    sudo mv sonar-scanner-*/ /opt/sonar-scanner
+    sudo ln -s /opt/sonar-scanner/bin/sonar-scanner /usr/local/bin/sonar-scanner
+```
+- verify ```sonar-scanner --version```
+
 - access the server on ```http://<ip-address>:9000```
 - Install docker pipeline, SonarQube scanner
 - To integrate sonar with jenkins we'll setup the cred.
