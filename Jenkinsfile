@@ -4,7 +4,7 @@ pipeline {
 
     environment {
         SONAR_URL = "http://34.220.45.126:9000/"
-        DOCKER_IMAGE_PREFIX = "erickgichukimucheru/cicdpipeline"
+        DOCKER_IMAGE_PREFIX = "erickgichukimucheru/pythondev"
         REGISTRY_URL = "https://index.docker.io/v1/"
         GIT_REPO_NAME = "Java-maven-cicid"
         GIT_USER_NAME = "ErickGichuki"
