@@ -1,6 +1,9 @@
 pipeline {
     agent {
+        docker {
         image 'erickgichukimucheru/pythondev:latest'
+        }
+    }
 
     environment {
         SONAR_URL = "http://34.220.45.126:9000/"
@@ -62,5 +65,4 @@ pipeline {
             }
         }
     }
-}
 }
