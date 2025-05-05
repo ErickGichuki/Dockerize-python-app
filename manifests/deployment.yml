@@ -16,6 +16,6 @@ spec:
     spec: 
       containers:
       - name: python-app
-        image: erickgichukimucheru/cicdpipeline
+        image: erickgichukimucheru/pythondev:latest
         ports:
         - containerPort: 8080
