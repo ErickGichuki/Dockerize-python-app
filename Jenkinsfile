@@ -1,5 +1,6 @@
 pipeline {
-    agent any
+    agent {
+        image 'erickgichukimucheru/pythondev:latest'
 
     environment {
         SONAR_URL = "http://35.86.171.160:9000/"
