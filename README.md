@@ -1,24 +1,26 @@
 - install java
 ```sudo apt update```
 ```sudo apt install openjdk-17-jre```
-- install jenkins:
-curl -fsSL https://pkg.jenkins.io/debian/jenkins.io-2023.key | sudo tee \
-  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
-echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
-  https://pkg.jenkins.io/debian binary/ | sudo tee \
-  /etc/apt/sources.list.d/jenkins.list > /dev/null
-sudo apt-get update
-sudo apt-get install jenkins -y
+- install jenkins from the official docs
 
 - Install docker as agent
 - ```sudo apt update```
     ```sudo apt install docker.io -y```
+  
 - Grant jenkins and ubuntu user permissions to docker daemon
  ```sudo su - ```
  ```usermod -aG docker jenkins```
  ```usermod -aG docker ubuntu```
  ```systemctl restart docker```
 
+- install sonar-scanner 
+```sudo apt update
+    sudo apt install -y unzip
+    wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip
+    unzip sonar-scanner-cli-*.zip
+    sudo mv sonar-scanner-*/ /opt/sonar-scanner
+    sudo ln -s /opt/sonar-scanner/bin/sonar-scanner /usr/local/bin/sonar-scanner
+```
  - configuring sonarqube: 
     ```apt install unzip```
     ```adduser sonarqube```
@@ -29,14 +31,7 @@ sudo apt-get install jenkins -y
     ```chown -R sonarqube:sonarqube /home/sonarqube/sonarqube-9.4.0.54424```
     ```cd sonarqube-9.4.0.54424/bin/linux-x86-64/```
     ```./sonar.sh start```
-- install sonar-scanner 
-```sudo apt update
-    sudo apt install -y unzip
-    wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip
-    unzip sonar-scanner-cli-*.zip
-    sudo mv sonar-scanner-*/ /opt/sonar-scanner
-    sudo ln -s /opt/sonar-scanner/bin/sonar-scanner /usr/local/bin/sonar-scanner
-```
+
 - verify ```sonar-scanner --version```
 
 - access the server on ```http://<ip-address>:9000```
