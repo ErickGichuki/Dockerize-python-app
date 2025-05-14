@@ -22,8 +22,7 @@
     sudo ln -s /opt/sonar-scanner/bin/sonar-scanner /usr/local/bin/sonar-scanner
 ```
  - configuring sonarqube: 
-    ```apt install unzip```
-    ```adduser sonarqube```
+    ```sudo adduser sonarqube```
     ```sudo su - sonarqube```
     ```wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.4.0.54424.zip```
     ```unzip *```
