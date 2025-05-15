@@ -1,17 +1,22 @@
-- install java
-```sudo apt update```
-```sudo apt install openjdk-17-jre```
+- install java runtime
+```
+    sudo apt update
+    sudo apt install openjdk-17-jre
+```
 - install jenkins from the official docs
 
 - Install docker as agent
-- ```sudo apt update```
-    ```sudo apt install docker.io -y```
+  ```
+  sudo apt update
+  sudo apt install docker.io -y
+  ```
   
 - Grant jenkins and ubuntu user permissions to docker daemon
- ```sudo su - ```
- ```usermod -aG docker jenkins```
- ```usermod -aG docker ubuntu```
- ```systemctl restart docker```
+ ```sudo su - 
+     usermod -aG docker jenkins
+     usermod -aG docker ubuntu
+     systemctl restart docker
+```
 
 - install sonar-scanner 
 ```sudo apt update
